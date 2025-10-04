@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA">
+
+    <!-- Scrollable content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingBottom="88dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="24dp">
+
+            <!-- BMI Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/bmiCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                android:backgroundTint="#FFFFFF"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/bmiTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Your BMI"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="#FF0436"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/bmiValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.0"
+                        android:textSize="48sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000"
+                        app:layout_constraintTop_toBottomOf="@id/bmiTitle"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="20dp"/>
+
+                    <TextView
+                        android:id="@+id/bmiSuggestion"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Your health status will appear here"
+                        android:textSize="18sp"
+                        android:textColor="#555555"
+                        android:gravity="center"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/bmiValue"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="16dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Daily Goals Title -->
+            <TextView
+                android:id="@+id/dailyGoalsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Today's Goals"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#1A1A1A"
+                app:layout_constraintTop_toBottomOf="@id/bmiCard"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="32dp"/>
+
+            <!-- Water Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/waterCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                android:backgroundTint="#E3F2FD"
+                app:layout_constraintTop_toBottomOf="@id/dailyGoalsTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/waterIntake"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Water: — L"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#0096FF"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <ProgressBar
+                        android:id="@+id/waterProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:progress="0"
+                        android:progressTint="#0096FF"
+                        app:layout_constraintTop_toBottomOf="@id/waterIntake"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="16dp"/>
+
+                    <Button
+                        android:id="@+id/addWaterBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add 250ml Water"
+                        android:backgroundTint="#0096FF"
+                        android:textColor="#FFFFFF"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/waterProgress"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="16dp"/>
+
+                    <TextView
+                        android:id="@+id/waterHint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Long press button to change cup size"
+                        android:textSize="12sp"
+                        android:textColor="#555555"
+                        app:layout_constraintTop_toBottomOf="@id/addWaterBtn"
+                        app:layout_constraintStart_toStartOf="@id/addWaterBtn"
+                        android:layout_marginTop="4dp"/>
+
+                    <!-- Reminder inside Water Card -->
+                    <TextView
+                        android:id="@+id/reminderLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reminder Interval"
+                        android:textSize="14sp"
+                        android:textColor="#555555"
+                        app:layout_constraintTop_toBottomOf="@id/waterHint"
+                        app:layout_constraintStart_toStartOf="@id/waterHint"
+                        android:layout_marginTop="12dp"/>
+
+                    <NumberPicker
+                        android:id="@+id/reminderIntervalPicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/reminderLabel"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="4dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Steps Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/stepsCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                android:backgroundTint="#FFF9E6"
+                app:layout_constraintTop_toBottomOf="@id/waterCard"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/stepGoal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Steps: —"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFBF00"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <ProgressBar
+                        android:id="@+id/stepsProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:progress="0"
+                        android:progressTint="#FFBF00"
+                        app:layout_constraintTop_toBottomOf="@id/stepGoal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="16dp"/>
+
+                    <Button
+                        android:id="@+id/addStepBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add 500 Steps"
+                        android:backgroundTint="#FFBF00"
+                        android:textColor="#FFFFFF"
+                        app:cornerRadius="12dp"
+                        app:layout_constraintTop_toBottomOf="@id/stepsProgress"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="16dp"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#FFFFFF"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@null"
+        app:itemTextColor="@color/nav_item_color"
+        app:itemIconSize="28dp"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

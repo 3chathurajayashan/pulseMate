@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main) // <-- use your splash XML here
+        setContentView(R.layout.activity_main)
 
-        // Handle system bars (safe area)
+        // Safe area
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -26,20 +26,28 @@ class MainActivity : AppCompatActivity() {
         }
 
         val progressBar: ProgressBar = findViewById(R.id.progressBar)
-        progressBar.visibility = View.GONE // hide at start
+        progressBar.visibility = View.GONE
 
-        // Step 1: Wait 2 seconds → only show title + tagline
+        // Check if BMI is already saved
+        val sharedPrefs = getSharedPreferences("UserData", MODE_PRIVATE)
+        val savedBmi = sharedPrefs.getFloat("bmi", 0.0f)
+
         Handler(Looper.getMainLooper()).postDelayed({
-            // Step 2: Show spinner
             progressBar.visibility = View.VISIBLE
 
-            // Step 3: After 1s with spinner → move to Onboarding
             Handler(Looper.getMainLooper()).postDelayed({
-                val intent = Intent(this, onBoardScreen1::class.java)
-                startActivity(intent)
-                finish()
-            }, 1500) // 1 sec spinner
+                val nextIntent = if (savedBmi > 0f) {
+                    // BMI exists → go to Home
+                    Intent(this, homeScreen::class.java)
+                } else {
+                    // No BMI → start onboarding
+                    Intent(this, onBoardScreen1::class.java)
+                }
 
-        }, 3000) // wait 2 sec before showing spinner
+                startActivity(nextIntent)
+                finish()
+            }, 1500) // spinner duration
+
+        }, 2000) // initial delay before showing spinner
     }
 }
