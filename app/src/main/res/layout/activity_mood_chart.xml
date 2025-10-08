@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#F8F9FD">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/chartTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Mood Overview"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#1E1E2D"
+        android:fontFamily="sans-serif-medium"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Calendar Selector -->
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:mcv_showOtherDates="all"
+        app:mcv_selectionColor="#EC407A"
+        app:layout_constraintTop_toBottomOf="@id/chartTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Line Chart -->
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/moodLineChart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/calendarView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/moodStatsCard"/>
+
+    <!-- Mood Stats Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/moodStatsCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="4dp"
+        android:backgroundTint="#FFFFFF"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/moodLineChart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/avgMoodText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Average Mood: —"
+                android:textSize="16sp"
+                android:textColor="#1E1E2D"
+                android:fontFamily="sans-serif-medium"/>
+
+            <TextView
+                android:id="@+id/moodTrendText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mood Trend: —"
+                android:textSize="16sp"
+                android:textColor="#1E1E2D"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
